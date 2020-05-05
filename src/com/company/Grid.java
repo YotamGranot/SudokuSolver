@@ -59,12 +59,12 @@ public class Grid {
     public boolean solveGrid() {
         for (int row = 0; row < SIZE; row++) {
             for (int col = 0; col < SIZE; col++) {
-                // we search an empty cell
+                // we search for the first empty cell
                 if (grid[row][col] == EMPTY_CELL) {
-                    // we try possible numbers
+                    //  try every possible numbers
                     for (int number = 1; number <= SIZE; number++) {
                         if (isLeagal(row, col, number)) {
-                            // number ok. it respects sudoku constraints
+                            // number is legal for this cell.
                             grid[row][col] = number;
 
                             if (solveGrid()) { // we start backtracking recursively
@@ -75,7 +75,7 @@ public class Grid {
                         }
                     }
 
-                    return false; // we return false
+                    return false; // we return false - couldnt solve
                 }
             }
         }
